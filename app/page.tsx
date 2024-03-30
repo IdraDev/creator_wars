@@ -206,7 +206,7 @@ export default function Home() {
             </div>
             <img
               src={element1?.image.src}
-              className={`${wrong && "grayscale"} w-full h-full object-cover transition duration-200 opacity-25 group-hover:lg:opacity-35`}
+              className={`${wrong && "grayscale"} w-full h-full object-cover transition duration-200 opacity-20 group-hover:lg:opacity-30`}
               draggable="false"
               alt=""
             />
@@ -288,7 +288,7 @@ export default function Home() {
             </div>
             <img
               src={element2?.image.src}
-              className={`${wrong && "grayscale"} w-full h-full object-cover transition duration-200 opacity-25 group-hover:lg:opacity-35`}
+              className={`${wrong && "grayscale"} w-full h-full object-cover transition duration-200 opacity-20 group-hover:lg:opacity-30`}
               draggable="false"
               alt=""
             />
