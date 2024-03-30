@@ -1,7 +1,8 @@
+// @ts-nocheck
 "use client";
 import Image from "next/image";
 import { useState, useEffect } from "react";
-import { animate, motion } from "framer-motion";
+import { animate, motion, useAnimate } from "framer-motion";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { IconProp } from "@fortawesome/fontawesome-svg-core";
 import { faArrowUp, faArrowDown } from "@fortawesome/free-solid-svg-icons";
@@ -12,7 +13,8 @@ export default function Home() {
   const [bestScore, setBestScore] = useState(0);
   const [element1, setElement1] = useState();
   const [element2, setElement2] = useState();
-  const [choice, setChoice] = useState(false);
+  const [correct, setCorrect] = useState(false);
+  const [wrong, setWrong] = useState(false);
 
   const data = [
     {
@@ -32,10 +34,18 @@ export default function Home() {
       },
     },
     {
-      name: "Fedezzazzo",
-      followers: 15200000,
+      name: "Dario Moccia",
+      followers: 15200,
       image: {
-        src: "https://hips.hearstapps.com/hmg-prod/images/chiara-ferragni-fedez-crisi-social-65ed8166ba6c1.jpg?crop=1xw:0.37421590909090907xh;center,top",
+        src: "https://cdn.skuola.net/w1200h687/news_foto/2022/02/dario-moccia.jpg",
+        name: "Test",
+      },
+    },
+    {
+      name: "Maurizio Merluzzo",
+      followers: 12,
+      image: {
+        src: "https://directus.luccacomicsandgames.com/lucca-comics-2023/assets/3dw9hfpci7mskkk0?key=directus-large-contain",
         name: "Test",
       },
     },
@@ -54,14 +64,14 @@ export default function Home() {
 
   function setHigher() {
     if (element2?.followers > element1?.followers) {
-      () => setChoice(true);
-    } else () => setChoice(false);
+      setCorrect(true);
+    } else setWrong(true);
   }
 
   function setLower() {
     if (element2?.followers < element1?.followers) {
-      setChoice(true);
-    } else () => setChoice(false);
+      setCorrect(true);
+    } else setWrong(true);
   }
 
   return (
@@ -136,7 +146,7 @@ export default function Home() {
                   }}
                 >
                   <h1 className="drop-shadow-md font-bold text-5xl lg:text-6xl">
-                    <b>{element1.name}</b>
+                    <b>{element1?.name}</b>
                   </h1>
                 </motion.div>
                 <motion.div
@@ -164,12 +174,12 @@ export default function Home() {
                   }}
                 >
                   <h1 className="drop-shadow-md text-[#FFEA2D] font-bold text-4xl lg:text-6xl">
-                    <b>{element1.followers}</b>
+                    <b>{element1?.followers}</b>
                   </h1>
                 </motion.div>
               </div>
               <img
-                src={element1.image.src}
+                src={element1?.image.src}
                 className="w-full h-full object-cover transition duration-200 opacity-25 group-hover:lg:opacity-50"
                 draggable="false"
                 alt=""
@@ -196,7 +206,7 @@ export default function Home() {
                   }}
                 >
                   <h1 className="drop-shadow-md font-bold text-5xl lg:text-6xl">
-                    <b>{element2.name}</b>
+                    <b>{element2?.name}</b>
                   </h1>
                 </motion.div>
                 <motion.div
@@ -236,6 +246,7 @@ export default function Home() {
                       />
                     </button>
                   </motion.div>
+
                   <motion.div
                     initial={{
                       y: 0,
@@ -250,18 +261,20 @@ export default function Home() {
                       onClick={() => setLower()}
                       className="shadow-md focus:outline-none  w-fit text-center items-center transition duration-200 lg:hover:scale-105 lg:hover:bg-black/50 active:scale-95 focus:ring-2 focus:ring-white/10 flex flex-row space-x-2 rounded-full px-10 py-2.5 border-2 border-white bg-black/20 backdrop-blur-sm"
                     >
-                      <span>Di meno</span> {choice && <p>minchia giusto</p>}
+                      <span>Di meno</span>
                       <FontAwesomeIcon
                         width={"0.8rem"}
                         color="#FF4545"
                         icon={faArrowDown as IconProp}
                       />
                     </button>
+                    {correct && <p>minchia giusto</p>}
+                    {wrong && <p>minchia sbagliato</p>}
                   </motion.div>
                 </div>
               </div>
               <img
-                src={element2.image.src}
+                src={element2?.image.src}
                 className="w-full h-full object-cover transition duration-200 opacity-25 group-hover:lg:opacity-50"
                 draggable="false"
                 alt=""
