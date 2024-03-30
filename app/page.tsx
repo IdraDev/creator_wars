@@ -1,6 +1,7 @@
 // @ts-nocheck
 "use client";
 import React, { useState, useEffect } from "react";
+import Header from "../components/header";
 import { motion } from "framer-motion";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { IconProp } from "@fortawesome/fontawesome-svg-core";
@@ -111,18 +112,21 @@ export default function Home() {
 
   return (
     <main>
-      <div className="pointer-events-none absolute z-50 w-screen flex justify-center pt-5 sm:pt-10 lg:pt-20">
+      <Header />
+      <div className="pointer-events-none absolute z-50 w-screen flex justify-center pt-[1rem] md:pt-[2rem] lg:pt-20">
         <div className="text-center flex flex-col -space-y-1 md:space-y-0">
           <motion.div
             initial={{ y: 0, opacity: 0 }}
             animate={{ y: 10, opacity: 100 }}
           >
-            <h1 className="flex flex-row space-x-2 drop-shadow-md font-black text-3xl lg:text-5xl tracking-tight">
-              <FontAwesomeIcon
-                width={"2rem"}
-                color="white"
-                icon={faInstagram as IconProp}
-              />
+            <h1 className="flex flex-row space-x-2 drop-shadow-md font-black text-2xl lg:text-5xl tracking-tight">
+              <span className="hidden sm:inline-flex">
+                <FontAwesomeIcon
+                  width={"2rem"}
+                  color="white"
+                  icon={faInstagram as IconProp}
+                />
+              </span>
               <b>Chi ha più follower?</b>
             </h1>
           </motion.div>
@@ -131,7 +135,16 @@ export default function Home() {
             animate={{ opacity: 100 }}
             transition={{ y: 0, delay: 0.1, ease: "easeInOut" }}
           >
-            <p className="drop-shadow-md text-lg opacity-80">Su instagram</p>
+            <p className="items-center drop-shadow-md text-lg opacity-80">
+              <span className="inline-flex sm:hidden">
+                <FontAwesomeIcon
+                  width={"1rem"}
+                  color="white"
+                  icon={faInstagram as IconProp}
+                />
+              </span>
+              <span className="relative -top-0.5 sm:top-0">Su instagram</span>
+            </p>
 
             {wrong && (
               <motion.div
@@ -154,7 +167,7 @@ export default function Home() {
           transition={{ ease: "easeInOut", bounce: 5 }}
         >
           <div
-            className={`justify-center p-4 lg:p-6 rounded-full shadow-xl shadow-white/20 bg-white text-black ${wrong && "bg-red-400 text-red-400 shadow-red-400/10"} ${correct && "bg-green-400 text-green-400 shadow-green-400/10"}`}
+            className={`justify-center p-4 lg:p-6 rounded-full shadow-xl  ${!wrong && !correct && "bg-white shadow-white/20"} text-black ${wrong && "bg-red-400 text-red-400 shadow-red-400/20"} ${correct && "bg-green-400 text-green-400 shadow-green-400/20"}`}
           >
             <h1 className={`text-2xl lg:text-4xl`}>
               {!wrong && !correct && <span className="mx-0.5">vs</span>}{" "}
@@ -181,7 +194,7 @@ export default function Home() {
                 animate={{ opacity: 100, scale: 1 }}
                 transition={{ ease: "easeInOut", bounce: 5 }}
               >
-                <h1 className="text-center drop-shadow-md font-bold text-5xl lg:text-6xl">
+                <h1 className="text-center drop-shadow-md font-bold text-4xl lg:text-6xl">
                   <b>{element1?.name}</b>
                 </h1>
               </motion.div>
@@ -190,7 +203,7 @@ export default function Home() {
                 animate={{ y: -4, opacity: 100 }}
                 transition={{ delay: 0.2 }}
               >
-                <p className="drop-shadow-md text-2xl lg:text-3xl opacity-80">
+                <p className="drop-shadow-md text-lg lg:text-3xl opacity-80">
                   ne ha
                 </p>
               </motion.div>
@@ -199,7 +212,7 @@ export default function Home() {
                 animate={{ y: -5, opacity: 100 }}
                 transition={{ delay: 0.25 }}
               >
-                <h1 className="drop-shadow-md text-[#FFEA2D] font-bold text-5xl lg:text-6xl">
+                <h1 className="drop-shadow-md text-[#FFEA2D] font-bold text-4xl sm:text-5xl lg:text-6xl">
                   <b>{element1?.followers}</b>
                 </h1>
               </motion.div>
@@ -220,7 +233,7 @@ export default function Home() {
                 animate={{ opacity: 100, scale: 1 }}
                 transition={{ ease: "easeInOut", bounce: 5 }}
               >
-                <h1 className="text-center drop-shadow-md font-bold text-5xl lg:text-6xl">
+                <h1 className="text-center drop-shadow-md font-bold text-4xl sm:text-5xl lg:text-6xl">
                   <b>{element2?.name}</b>
                 </h1>
               </motion.div>
@@ -240,7 +253,7 @@ export default function Home() {
                   transition={{ delay: 0.25 }}
                 >
                   <h1
-                    className={`drop-shadow-md text-[#FFEA2D] ${wrong && "text-red-400"} ${correct && "text-green-400"}  font-bold text-5xl lg:text-6xl`}
+                    className={`drop-shadow-md text-[#FFEA2D] ${wrong && "text-red-400"} ${correct && "text-green-400"} drop-shadow-md font-bold text-5xl lg:text-6xl`}
                   >
                     <b>{element2?.followers}</b>
                   </h1>
