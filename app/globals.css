@@ -5,7 +5,3 @@
 body {
   @apply bg-neutral-900 text-white selection:bg-white/5 text-lg;
 }
-
-.slideToLeft {
-  transform: translateX(-50%);
-}
