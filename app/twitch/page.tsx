@@ -46,7 +46,7 @@ export default function Twitch() {
       name: "NeZaK_",
       image: {
         src: "https://creatorsontwitch.com/_next/image?url=https%3A%2F%2Fbackend.creatorsontwitch.com%2Fwp-content%2Fuploads%2F2021%2F06%2FNezak_.png&w=640&q=100",
-        source: "CreatorsOnTwitch",
+        source: "Creators on Twitch",
       },
     },
     {
@@ -78,7 +78,14 @@ export default function Twitch() {
       },
     },
     {
-      name: "lollolacustre",
+      name: "Tumblurr",
+      image: {
+        src: "https://pbs.twimg.com/profile_images/1627328287985790976/Z8wURwLM_400x400.jpg",
+        source: "X",
+      },
+    },
+    {
+      name: "Lollolacustre",
       image: {
         src: "https://p16-sign-va.tiktokcdn.com/tos-maliva-avt-0068/e6746d21eb46f406dba11aa8a839e47a~c5_720x720.jpeg?lk3s=a5d48078&x-expires=1711994400&x-signature=whLM7VZgXY4x5nLAUyepuVnwX98%3D",
         source: "TikTok",
@@ -88,7 +95,7 @@ export default function Twitch() {
       name: "pizfn",
       image: {
         src: "https://panels.twitch.tv/panel-236507843-image-9d5d2396-96f6-44ae-a57d-d0951bfb8f67",
-        source: "Twitch Panels",
+        source: "Twitch",
       },
     },
     {
@@ -106,10 +113,10 @@ export default function Twitch() {
       },
     },
     {
-      name: "Chxcco",
+      name: "MarioSturniolo",
       image: {
-        src: "https://media1.tenor.com/m/h3rVLgV4HfIAAAAd/chxcco-coralmc.gif",
-        source: "Tenor",
+        src: "https://globaluserfiles.com/media/113657_112a66fb9290d65234ae297d9c2e0f84a390ee18.jpeg/v1/w_0,h_0/sturniolo-bio.jpeg",
+        source: "Etna Comics",
       },
     },
     {
@@ -157,8 +164,148 @@ export default function Twitch() {
     {
       name: "Cedduzzo",
       image: {
-        src: "https://static-cdn.jtvnw.net/jtv_user_pictures/b683e004-88a7-4404-b19f-919403dd4595-profile_image-300x300.jpeg",
+        src: "https://clips-media-assets2.twitch.tv/AT-cm%7C639872430-preview-480x272.jpg",
         source: "Twitch",
+      },
+    },
+    {
+      name: "giankoextreme",
+      image: {
+        src: "https://static-cdn.jtvnw.net/cf_vods/dgeft87wbj63p/73a18827eb62d911c6e9_giankoextreme_41995854536_1709582336//thumb/thumb0-640x360.jpg",
+        source: "Twitch",
+      },
+    },
+    {
+      name: "Teknoyd",
+      image: {
+        src: "https://directus.luccacomicsandgames.com/lucca-comics-2023/assets/13f8p17litpcksks?key=directus-large-contain",
+        source: "Lucca Comics & Games",
+      },
+    },
+    {
+      name: "VivaLaFazza",
+      image: {
+        src: "https://backend.creatorsontwitch.com/wp-content/uploads/2021/05/vivalafazza.jpg",
+        source: "Creators on Twitch",
+      },
+    },
+    {
+      name: "Delux",
+      image: {
+        src: "https://backend.creatorsontwitch.com/wp-content/uploads/2021/05/Delux.jpg",
+        source: "Creators on Twitch",
+      },
+    },
+    {
+      name: "Attrix",
+      image: {
+        src: "https://clips-media-assets2.twitch.tv/FLf5I0J1N9ZtLzRGk_xxSQ/39970921272-offset-4976-preview-480x272.jpg",
+        source: "Twitch",
+      },
+    },
+    {
+      name: "Kodomo",
+      image: {
+        src: "https://i.pinimg.com/736x/6b/f3/99/6bf39919a429d0c0c6778a5835d8b840.jpg",
+        source: "Pinterest",
+      },
+    },
+    {
+      name: "ItsLomba",
+      image: {
+        src: "https://backend.creatorsontwitch.com/wp-content/uploads/2021/05/lomba.png",
+        source: "Creators on Twitch",
+      },
+    },
+    {
+      name: "Velox",
+      image: {
+        src: "https://i.ytimg.com/vi/S-2qpLKBgwE/maxresdefault.jpg",
+        source: "Pinterest",
+      },
+    },
+    {
+      name: "Moonryde",
+      image: {
+        src: "https://pbs.twimg.com/profile_images/1606258469111271427/WaSeDIGh_400x400.jpg",
+        source: "X",
+      },
+    },
+    {
+      name: "JTaz",
+      image: {
+        src: "https://backend.creatorsontwitch.com/wp-content/uploads/2021/05/jtaz_.jpg",
+        source: "Creators on Twitch",
+      },
+    },
+    {
+      name: "JezuzJrr",
+      image: {
+        src: "https://backend.creatorsontwitch.com/wp-content/uploads/2022/08/JezuzJrr.jpg",
+        source: "Creators on Twitch",
+      },
+    },
+    {
+      name: "ilMasseo",
+      image: {
+        src: "https://media1.tenor.com/m/PmzjbX5wYYoAAAAd/talkpout-ilmasseo.gif",
+        source: "Tenor",
+      },
+    },
+    {
+      name: "DarioMocciaTwitch",
+      image: {
+        src: "https://media1.tenor.com/m/Nknr9zH9Z7oAAAAd/dario-moccia.gif",
+        source: "Tenor",
+      },
+    },
+    {
+      name: "HALtv",
+      image: {
+        src: "https://static-cdn.jtvnw.net/cf_vods/d1m7jfoe9zdc1j/9db792d620283c26f433_haltv_18911700471_6238888466//thumb/thumb2090719444-640x360.jpg",
+        source: "Twitch",
+      },
+    },
+    {
+      name: "GaBBoDSQ",
+      image: {
+        src: "https://creatorsontwitch.com/_next/image?url=https%3A%2F%2Fbackend.creatorsontwitch.com%2Fwp-content%2Fuploads%2F2021%2F05%2Fjustgabbo-thumb.jpg&w=640&q=100",
+        source: "Creators on Twitch",
+      },
+    },
+    {
+      name: "Paoloidolo",
+      image: {
+        src: "https://i.makeagif.com/media/7-22-2017/gs4SCC.gif",
+        source: "Make a Gif (da un video YouTube)",
+      },
+    },
+    {
+      name: "Cerbero_Podcast",
+      image: {
+        src: "https://media1.tenor.com/m/XncaK73uBGwAAAAC/cerbero-podcast-radio-boomer.gif",
+        source: "Tenor",
+      },
+    },
+    {
+      name: "Fierik",
+      image: {
+        src: "https://media1.tenor.com/m/690V6_kWFtkAAAAd/fierik-ballo.gif",
+        source: "Tenor",
+      },
+    },
+    {
+      name: "Kyrenis",
+      image: {
+        src: "https://globaluserfiles.com/media/113657_34539caa0ff9dcceb8e271679f945b3c49a9e8d8.jpeg/v1/w_0,h_0/kyrenis-bio.jpeg",
+        source: "Etna Comics",
+      },
+    },
+    {
+      name: "Kilnier",
+      image: {
+        src: "https://i.ytimg.com/vi/g3zmbdHw9Cw/frame0.jpg",
+        source: "YouTube",
       },
     },
   ];
@@ -243,16 +390,31 @@ export default function Twitch() {
     setElement2({ ...data[index2], index: index2 });
   }, []);
 
+  useEffect(() => {
+    const storedBestScore = localStorage.getItem("bestScore");
+    const parsedBestScore = parseInt(storedBestScore);
+
+    // Se il punteggio memorizzato in localStorage è superiore al punteggio attuale, aggiorna il punteggio migliore
+    if (!isNaN(parsedBestScore) && parsedBestScore > bestScore) {
+      setBestScore(parsedBestScore);
+    }
+  }, []);
+
+  useEffect(() => {
+    // Ogni volta che il punteggio migliore cambia, salvalo in localStorage
+    localStorage.setItem("bestScore", bestScore.toString());
+  }, [bestScore]);
+
   const { data: followersData1, error: followersError1 } = useSWR(
     element1
-      ? `https://twitchtracker.com/api/channels/summary/${element1.name}`
+      ? `https://twitchtracker.com/api/channels/summary/${element1.name.toLowerCase()}`
       : null,
     fetcher
   );
 
   const { data: followersData2, error: followersError2 } = useSWR(
     element2
-      ? `https://twitchtracker.com/api/channels/summary/${element2.name}`
+      ? `https://twitchtracker.com/api/channels/summary/${element2.name.toLowerCase()}`
       : null,
     fetcher
   );
@@ -359,9 +521,8 @@ export default function Twitch() {
                           <span className="text-[#FFEA2D]">{score} </span>
                           <span className="opacity-80">
                             {" "}
-                            (Migliore: {bestScore}{" "}
+                            (Migliore: {bestScore})
                           </span>
-                          )
                         </p>
                       </div>
                     </div>
@@ -590,6 +751,7 @@ export default function Twitch() {
               {buttons && (
                 <div className="flex items-center pt-4 flex-col space-y-4">
                   <motion.div
+                    key={animationKey2}
                     initial={{ y: -5, opacity: 0 }}
                     animate={{ y: -0, opacity: 100 }}
                     transition={{ delay: 0.4 }}

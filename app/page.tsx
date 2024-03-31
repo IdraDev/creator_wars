@@ -45,7 +45,7 @@ export default function Home() {
             </h1>
           </div>
         </motion.div>
-        <div className="items-center mt-6 grid gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 max-w-[100rem]">
+        <div className="items-center mt-6 grid gap-5 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 max-w-[100rem]">
           <motion.div
             initial={{ x: -4, opacity: 0 }}
             animate={{ x: 0, opacity: 100 }}
