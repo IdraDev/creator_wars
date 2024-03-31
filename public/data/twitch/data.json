@@ -147,6 +147,13 @@
     }
   },
   {
+    "name": "Cydonia e Chiara",
+    "image": {
+      "src": "https://directus.luccacomicsandgames.com/lucca-comics-2022/assets/3oz4k6rfazeoogk0?key=directus-large-contain",
+      "source": "Lucca Comics & Games"
+    }
+  },
+  {
     "name": "VivaLaFazza",
     "image": {
       "src": "https://backend.creatorsontwitch.com/wp-content/uploads/2021/05/vivalafazza.jpg",
@@ -172,6 +179,13 @@
     "image": {
       "src": "https://i.pinimg.com/736x/6b/f3/99/6bf39919a429d0c0c6778a5835d8b840.jpg",
       "source": "Pinterest"
+    }
+  },
+  {
+    "name": "ZanoXVII",
+    "image": {
+      "src": "https://backend.creatorsontwitch.com/wp-content/uploads/2021/05/ZanoXVII.jpg",
+      "source": "Creators on Twitch"
     }
   },
   {
@@ -203,6 +217,13 @@
     }
   },
   {
+    "name": "Rekinss",
+    "image": {
+      "src": "https://static-cdn.jtvnw.net/jtv_user_pictures/8a13d849-919e-4416-ac03-4cd5a8b7fcbe-profile_image-300x300.png",
+      "source": "Twitch"
+    }
+  },
+  {
     "name": "JezuzJrr",
     "image": {
       "src": "https://backend.creatorsontwitch.com/wp-content/uploads/2022/08/JezuzJrr.jpg",
@@ -214,6 +235,13 @@
     "image": {
       "src": "https://media1.tenor.com/m/PmzjbX5wYYoAAAAd/talkpout-ilmasseo.gif",
       "source": "Tenor"
+    }
+  },
+  {
+    "name": "Billybella_",
+    "image": {
+      "src": "https://pbs.twimg.com/media/F0iMy2NX0AEngvd?format=jpg&name=large",
+      "source": "X"
     }
   },
   {

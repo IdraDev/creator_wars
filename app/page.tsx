@@ -73,7 +73,7 @@ export default function Home() {
               </div>
             </Link>
           </motion.div>
-          <motion.div
+          {/* <motion.div
             initial={{ x: -4, opacity: 0 }}
             animate={{ x: 0, opacity: 100 }}
             transition={{ ease: "easeInOut", delay: 0.6 }}
@@ -99,7 +99,7 @@ export default function Home() {
                 </div>
               </div>
             </Link>
-          </motion.div>
+          </motion.div> */}
         </div>
       </div>
     </div>
