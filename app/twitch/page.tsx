@@ -15,6 +15,8 @@ import {
   faArrowLeft,
   faArrowRotateBack,
 } from "@fortawesome/free-solid-svg-icons";
+import data from "@/public/data/twitch/data.json";
+import gifs from "@/public/data/twitch/gifs.json";
 
 import { faTwitch } from "@fortawesome/free-brands-svg-icons";
 import { Dialog, Transition } from "@headlessui/react";
@@ -28,341 +30,10 @@ export default function Twitch() {
   const [wrong, setWrong] = useState(false);
   const [buttons, setButtons] = useState(true);
   const [open, setOpen] = useState(false);
-
   const [animationKey1, setAnimationKey1] = useState(0);
   const [animationKey2, setAnimationKey2] = useState(1);
 
-  const fetcher = (url) => fetch(url).then((res) => res.json());
-
-  const data = [
-    {
-      name: "MatteoHS",
-      image: {
-        src: "https://media1.tenor.com/m/qz_K8setkXwAAAAC/matteohs-eating.gif",
-        source: "Tenor",
-      },
-    },
-    {
-      name: "NeZaK_",
-      image: {
-        src: "https://creatorsontwitch.com/_next/image?url=https%3A%2F%2Fbackend.creatorsontwitch.com%2Fwp-content%2Fuploads%2F2021%2F06%2FNezak_.png&w=640&q=100",
-        source: "Creators on Twitch",
-      },
-    },
-    {
-      name: "Enkk",
-      image: {
-        src: "https://media1.tenor.com/m/Dz64Z4SEwIwAAAAd/enkk.gif",
-        source: "Tenor",
-      },
-    },
-    {
-      name: "POW3R",
-      image: {
-        src: "https://media1.tenor.com/m/BYK4vr8V_OAAAAAd/pow3r-giorgio-calandrelli.gif",
-        source: "Tenor",
-      },
-    },
-    {
-      name: "Homyatol",
-      image: {
-        src: "https://media1.tenor.com/m/n2NkgrfxnS0AAAAd/homy-angeli-blu-homyatol-angeli-blu.gif",
-        source: "Tenor",
-      },
-    },
-    {
-      name: "NNarcos",
-      image: {
-        src: "https://static-cdn.jtvnw.net/jtv_user_pictures/7985342a-ccf4-41bc-85cc-8d2bff1b6ef5-channel_offline_image-1920x1080.jpeg",
-        source: "Twitch",
-      },
-    },
-    {
-      name: "Tumblurr",
-      image: {
-        src: "https://pbs.twimg.com/profile_images/1627328287985790976/Z8wURwLM_400x400.jpg",
-        source: "X",
-      },
-    },
-    {
-      name: "Lollolacustre",
-      image: {
-        src: "https://p16-sign-va.tiktokcdn.com/tos-maliva-avt-0068/e6746d21eb46f406dba11aa8a839e47a~c5_720x720.jpeg?lk3s=a5d48078&x-expires=1711994400&x-signature=whLM7VZgXY4x5nLAUyepuVnwX98%3D",
-        source: "TikTok",
-      },
-    },
-    {
-      name: "pizfn",
-      image: {
-        src: "https://panels.twitch.tv/panel-236507843-image-9d5d2396-96f6-44ae-a57d-d0951bfb8f67",
-        source: "Twitch",
-      },
-    },
-    {
-      name: "TheRealMarzaa",
-      image: {
-        src: "https://clips-media-assets2.twitch.tv/vqe5SiKd8mpiODMiTZiPUw/46747265324-offset-6654-preview-480x272.jpg",
-        source: "Twitch",
-      },
-    },
-    {
-      name: "Rekinss",
-      image: {
-        src: "https://i.ytimg.com/vi/6qohR7GLe8E/oar2.jpg?sqp=-oaymwEYCJUDENAFSFqQAgHyq4qpAwcIARUAAIhC&rs=AOn4CLA_6UuWFvNDubBIW-wydtIrgku-uw",
-        source: "Twitch",
-      },
-    },
-    {
-      name: "MarioSturniolo",
-      image: {
-        src: "https://globaluserfiles.com/media/113657_112a66fb9290d65234ae297d9c2e0f84a390ee18.jpeg/v1/w_0,h_0/sturniolo-bio.jpeg",
-        source: "Etna Comics",
-      },
-    },
-    {
-      name: "Homyatol",
-      image: {
-        src: "https://media1.tenor.com/m/n2NkgrfxnS0AAAAd/homy-angeli-blu-homyatol-angeli-blu.gif",
-        source: "Tenor",
-      },
-    },
-    {
-      name: "Gravier",
-      image: {
-        src: "https://i.ytimg.com/vi/hn2xOdwTyYs/maxresdefault.jpg",
-        source: "YouTube",
-      },
-    },
-    {
-      name: "Dada",
-      image: {
-        src: "https://clips-media-assets2.twitch.tv/AT-cm%7C1126066041-preview-480x272.jpg",
-        source: "Twitch",
-      },
-    },
-    {
-      name: "hmattTV",
-      image: {
-        src: "https://clips-media-assets2.twitch.tv/oKPqpYFdDdgNL4oFoZaSIg/AT-cm%7CoKPqpYFdDdgNL4oFoZaSIg-preview-260x147.jpg",
-        source: "Twitch",
-      },
-    },
-    {
-      name: "Kafkanya",
-      image: {
-        src: "https://media1.tenor.com/m/yk2KI5Bjvv4AAAAd/kafgoodbye-kafkanya.gif",
-        source: "Tenor",
-      },
-    },
-    {
-      name: "Patrizio_Official",
-      image: {
-        src: "https://static-cdn.jtvnw.net/jtv_user_pictures/e9d310e6-7c57-4e19-8002-cf4daaadbf9b-profile_image-300x300.png",
-        source: "Twitch",
-      },
-    },
-    {
-      name: "Cedduzzo",
-      image: {
-        src: "https://clips-media-assets2.twitch.tv/AT-cm%7C639872430-preview-480x272.jpg",
-        source: "Twitch",
-      },
-    },
-    {
-      name: "giankoextreme",
-      image: {
-        src: "https://static-cdn.jtvnw.net/cf_vods/dgeft87wbj63p/73a18827eb62d911c6e9_giankoextreme_41995854536_1709582336//thumb/thumb0-640x360.jpg",
-        source: "Twitch",
-      },
-    },
-    {
-      name: "Teknoyd",
-      image: {
-        src: "https://directus.luccacomicsandgames.com/lucca-comics-2023/assets/13f8p17litpcksks?key=directus-large-contain",
-        source: "Lucca Comics & Games",
-      },
-    },
-    {
-      name: "VivaLaFazza",
-      image: {
-        src: "https://backend.creatorsontwitch.com/wp-content/uploads/2021/05/vivalafazza.jpg",
-        source: "Creators on Twitch",
-      },
-    },
-    {
-      name: "Delux",
-      image: {
-        src: "https://backend.creatorsontwitch.com/wp-content/uploads/2021/05/Delux.jpg",
-        source: "Creators on Twitch",
-      },
-    },
-    {
-      name: "Attrix",
-      image: {
-        src: "https://clips-media-assets2.twitch.tv/FLf5I0J1N9ZtLzRGk_xxSQ/39970921272-offset-4976-preview-480x272.jpg",
-        source: "Twitch",
-      },
-    },
-    {
-      name: "Kodomo",
-      image: {
-        src: "https://i.pinimg.com/736x/6b/f3/99/6bf39919a429d0c0c6778a5835d8b840.jpg",
-        source: "Pinterest",
-      },
-    },
-    {
-      name: "ItsLomba",
-      image: {
-        src: "https://backend.creatorsontwitch.com/wp-content/uploads/2021/05/lomba.png",
-        source: "Creators on Twitch",
-      },
-    },
-    {
-      name: "Velox",
-      image: {
-        src: "https://i.ytimg.com/vi/S-2qpLKBgwE/maxresdefault.jpg",
-        source: "Pinterest",
-      },
-    },
-    {
-      name: "Moonryde",
-      image: {
-        src: "https://pbs.twimg.com/profile_images/1606258469111271427/WaSeDIGh_400x400.jpg",
-        source: "X",
-      },
-    },
-    {
-      name: "JTaz",
-      image: {
-        src: "https://backend.creatorsontwitch.com/wp-content/uploads/2021/05/jtaz_.jpg",
-        source: "Creators on Twitch",
-      },
-    },
-    {
-      name: "JezuzJrr",
-      image: {
-        src: "https://backend.creatorsontwitch.com/wp-content/uploads/2022/08/JezuzJrr.jpg",
-        source: "Creators on Twitch",
-      },
-    },
-    {
-      name: "ilMasseo",
-      image: {
-        src: "https://media1.tenor.com/m/PmzjbX5wYYoAAAAd/talkpout-ilmasseo.gif",
-        source: "Tenor",
-      },
-    },
-    {
-      name: "DarioMocciaTwitch",
-      image: {
-        src: "https://media1.tenor.com/m/Nknr9zH9Z7oAAAAd/dario-moccia.gif",
-        source: "Tenor",
-      },
-    },
-    {
-      name: "HALtv",
-      image: {
-        src: "https://static-cdn.jtvnw.net/cf_vods/d1m7jfoe9zdc1j/9db792d620283c26f433_haltv_18911700471_6238888466//thumb/thumb2090719444-640x360.jpg",
-        source: "Twitch",
-      },
-    },
-    {
-      name: "GaBBoDSQ",
-      image: {
-        src: "https://creatorsontwitch.com/_next/image?url=https%3A%2F%2Fbackend.creatorsontwitch.com%2Fwp-content%2Fuploads%2F2021%2F05%2Fjustgabbo-thumb.jpg&w=640&q=100",
-        source: "Creators on Twitch",
-      },
-    },
-    {
-      name: "Paoloidolo",
-      image: {
-        src: "https://i.makeagif.com/media/7-22-2017/gs4SCC.gif",
-        source: "Make a Gif (da un video YouTube)",
-      },
-    },
-    {
-      name: "Cerbero_Podcast",
-      image: {
-        src: "https://media1.tenor.com/m/XncaK73uBGwAAAAC/cerbero-podcast-radio-boomer.gif",
-        source: "Tenor",
-      },
-    },
-    {
-      name: "Fierik",
-      image: {
-        src: "https://media1.tenor.com/m/690V6_kWFtkAAAAd/fierik-ballo.gif",
-        source: "Tenor",
-      },
-    },
-    {
-      name: "Kyrenis",
-      image: {
-        src: "https://globaluserfiles.com/media/113657_34539caa0ff9dcceb8e271679f945b3c49a9e8d8.jpeg/v1/w_0,h_0/kyrenis-bio.jpeg",
-        source: "Etna Comics",
-      },
-    },
-    {
-      name: "Kilnier",
-      image: {
-        src: "https://i.ytimg.com/vi/g3zmbdHw9Cw/frame0.jpg",
-        source: "YouTube",
-      },
-    },
-  ];
-
-  const failGifs = [
-    {
-      image: {
-        src: "https://media.tenor.com/TmR485kf26oAAAAM/mio-padre-dario-moccia.gif",
-        source: "Tenor",
-      },
-    },
-    {
-      image: {
-        src: "https://media.tenor.com/Lg0ap7HoPQ4AAAAM/croix89-marco-merrino.gif",
-        source: "Tenor",
-      },
-    },
-    {
-      image: {
-        src: "https://media.tenor.com/1UDWzBwCyRIAAAAM/croix89-marco-merrino.gif",
-        source: "Tenor",
-      },
-    },
-    {
-      image: {
-        src: "https://media1.tenor.com/m/QrgVvEvRQYYAAAAC/ciao-ragazzi-marco-merrino.gif",
-        source: "Tenor",
-      },
-    },
-    {
-      image: {
-        src: "https://media1.tenor.com/m/JoI3WleeU7cAAAAC/blur-lugozzi.gif",
-        source: "Tenor",
-      },
-    },
-    {
-      image: {
-        src: "https://media1.tenor.com/m/pjL5awxHgFwAAAAd/twitch-cerbero-podcast.gif",
-        source: "Tenor",
-      },
-    },
-    {
-      image: {
-        src: "https://media1.tenor.com/m/YV1LR_Vx0bIAAAAd/dario-dario-moccia.gif",
-        source: "Tenor",
-      },
-    },
-    {
-      image: {
-        src: "https://media1.tenor.com/m/NXnEttE075UAAAAd/zeb89edera-mad.gif-",
-        source: "Tenor",
-      },
-    },
-  ];
-
-  let randomgif = Math.floor(Math.random() * failGifs.length);
-
+  // Random Indexes
   const generateRandomIndexes = (prevIndexes) => {
     let index1 = Math.floor(Math.random() * data.length);
     let index2 = Math.floor(Math.random() * data.length);
@@ -390,20 +61,22 @@ export default function Twitch() {
     setElement2({ ...data[index2], index: index2 });
   }, []);
 
+  // LocalStorage Best Score
   useEffect(() => {
     const storedBestScore = localStorage.getItem("bestScore");
     const parsedBestScore = parseInt(storedBestScore);
 
-    // Se il punteggio memorizzato in localStorage è superiore al punteggio attuale, aggiorna il punteggio migliore
     if (!isNaN(parsedBestScore) && parsedBestScore > bestScore) {
       setBestScore(parsedBestScore);
     }
   }, []);
 
   useEffect(() => {
-    // Ogni volta che il punteggio migliore cambia, salvalo in localStorage
     localStorage.setItem("bestScore", bestScore.toString());
   }, [bestScore]);
+
+  // Followers data Fetch
+  const fetcher = (url) => fetch(url).then((res) => res.json());
 
   const { data: followersData1, error: followersError1 } = useSWR(
     element1
@@ -419,8 +92,7 @@ export default function Twitch() {
     fetcher
   );
 
-  console.log(followersData1?.followers_total, followersData2?.followers_total);
-
+  // Answer engine
   const checkAnswer = (selected) => {
     const isCorrect = selected
       ? followersData2?.followers_total > followersData1?.followers_total
@@ -452,6 +124,7 @@ export default function Twitch() {
     }
   };
 
+  // Number formatter
   const formatNumber = (number) => {
     if (number < 1000) {
       return number;
@@ -463,6 +136,9 @@ export default function Twitch() {
       return (number / 1000000000).toFixed(1) + "Mld";
     }
   };
+
+  // Random gif
+  const randomgif = Math.floor(Math.random() * gifs.length);
 
   return (
     <main>
@@ -494,18 +170,15 @@ export default function Twitch() {
                 <Dialog.Panel className="relative transform overflow-hidden rounded-lg bg-black/50 border-2 border-white/10 backdrop-blur-md text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg">
                   <div className="px-4 pb-4 pt-5 sm:p-6 sm:pb-4">
                     <img
-                      src={failGifs[randomgif].image.src}
+                      src={gifs[randomgif].image.src}
                       alt=""
                       className="w-full h-[12rem] md:h-[18rem] rounded-lg mb-2 object-cover"
                     />
                     <p className="opacity-80 text-sm mb-2">
                       Fonte immagine:{" "}
-                      <Link
-                        href={failGifs[randomgif].image.src}
-                        target="_blank"
-                      >
+                      <Link href={gifs[randomgif].image.src} target="_blank">
                         <span className="font-bold">
-                          <b>{failGifs[randomgif].image.source}</b>
+                          <b>{gifs[randomgif].image.source}</b>
                         </span>
                       </Link>
                     </p>
