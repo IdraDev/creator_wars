@@ -18,6 +18,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="it">
+      <Analytics />
       <body className={font.className}>{children}</body>
     </html>
   );
