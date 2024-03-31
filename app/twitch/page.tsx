@@ -1,18 +1,22 @@
 // @ts-nocheck
 "use client";
-import React, { useState, useEffect } from "react";
+import React, { Fragment, useState, useEffect } from "react";
 import Link from "next/link";
 import Header from "@/components/header";
 import { motion } from "framer-motion";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { IconProp } from "@fortawesome/fontawesome-svg-core";
+import { useRouter } from "next/navigation";
 import {
   faArrowUp,
   faArrowDown,
   faXmark,
   faCheck,
+  faArrowLeft,
+  faArrowRotateBack,
 } from "@fortawesome/free-solid-svg-icons";
 import { faTwitch } from "@fortawesome/free-brands-svg-icons";
+import { Dialog, Transition } from "@headlessui/react";
 
 export default function Instagram() {
   const [score, setScore] = useState(0);
@@ -22,6 +26,8 @@ export default function Instagram() {
   const [correct, setCorrect] = useState(false);
   const [wrong, setWrong] = useState(false);
   const [buttons, setButtons] = useState(true);
+  const [open, setOpen] = useState(false);
+  const router = useRouter();
 
   const data = [
     {
@@ -58,6 +64,59 @@ export default function Instagram() {
     },
   ];
 
+  const failGifs = [
+    {
+      image: {
+        src: "https://media.tenor.com/TmR485kf26oAAAAM/mio-padre-dario-moccia.gif",
+        source: "Tenor",
+      },
+    },
+    {
+      image: {
+        src: "https://media.tenor.com/Lg0ap7HoPQ4AAAAM/croix89-marco-merrino.gif",
+        source: "Tenor",
+      },
+    },
+    {
+      image: {
+        src: "https://media.tenor.com/1UDWzBwCyRIAAAAM/croix89-marco-merrino.gif",
+        source: "Tenor",
+      },
+    },
+    {
+      image: {
+        src: "https://media1.tenor.com/m/QrgVvEvRQYYAAAAC/ciao-ragazzi-marco-merrino.gif",
+        source: "Tenor",
+      },
+    },
+    {
+      image: {
+        src: "https://media1.tenor.com/m/JoI3WleeU7cAAAAC/blur-lugozzi.gif",
+        source: "Tenor",
+      },
+    },
+    {
+      image: {
+        src: "https://media1.tenor.com/m/pjL5awxHgFwAAAAd/twitch-cerbero-podcast.gif",
+        source: "Tenor",
+      },
+    },
+    {
+      image: {
+        src: "https://media1.tenor.com/m/YV1LR_Vx0bIAAAAd/dario-dario-moccia.gif",
+        source: "Tenor",
+      },
+    },
+    {
+      image: {
+        src: "https://media1.tenor.com/m/NXnEttE075UAAAAd/zeb89edera-mad.gif-",
+        source: "Tenor",
+      },
+    },
+  ];
+
+  let randomgif = Math.floor(Math.random() * failGifs.length);
+
   const generateRandomIndexes = (prevIndexes) => {
     let index1 = Math.floor(Math.random() * data.length);
     let index2 = Math.floor(Math.random() * data.length);
@@ -75,12 +134,8 @@ export default function Instagram() {
 
     return [index1, index2];
   };
-  useEffect(() => {
-    const storedBestScore = localStorage.getItem("bestScore");
-    if (storedBestScore) {
-      setBestScore(parseInt(storedBestScore));
-    }
 
+  useEffect(() => {
     const [index1, index2] = generateRandomIndexes([
       element1?.index,
       element2?.index,
@@ -88,10 +143,6 @@ export default function Instagram() {
     setElement1({ ...data[index1], index: index1 });
     setElement2({ ...data[index2], index: index2 });
   }, []);
-
-  useEffect(() => {
-    localStorage.setItem("bestScore", bestScore.toString());
-  }, [bestScore]);
 
   const checkAnswer = (selected) => {
     const isCorrect = selected
@@ -116,11 +167,114 @@ export default function Instagram() {
     } else {
       setButtons(false);
       setWrong(true);
+      setTimeout(() => {
+        setOpen(true);
+      }, 3200);
     }
   };
 
   return (
     <main>
+      <Transition.Root show={open} as={Fragment} onClose={setOpen}>
+        <Dialog as="div" className="relative z-50">
+          <Transition.Child
+            as={Fragment}
+            enter="ease-out duration-300"
+            enterFrom="opacity-0"
+            enterTo="opacity-100"
+            leave="ease-in duration-200"
+            leaveFrom="opacity-100"
+            leaveTo="opacity-0"
+          >
+            <div className="fixed inset-0 grayscale bg-black/30 backdrop-blur-sm bg-opacity-75 transition-opacity" />
+          </Transition.Child>
+
+          <div className="fixed inset-0 z-10 w-screen overflow-y-auto">
+            <div className="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0">
+              <Transition.Child
+                as={Fragment}
+                enter="ease-out duration-300"
+                enterFrom="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
+                enterTo="opacity-100 translate-y-0 sm:scale-100"
+                leave="ease-in duration-200"
+                leaveFrom="opacity-100 translate-y-0 sm:scale-100"
+                leaveTo="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
+              >
+                <Dialog.Panel className="relative transform overflow-hidden rounded-lg bg-black/50 border-2 border-white/10 backdrop-blur-md text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg">
+                  <div className="px-4 pb-4 pt-5 sm:p-6 sm:pb-4">
+                    <img
+                      src={failGifs[randomgif].image.src}
+                      alt=""
+                      className="w-full h-[12rem] md:h-[18rem] rounded-lg mb-2 object-cover"
+                    />
+                    <p className="opacity-80 text-sm mb-2">
+                      Fonte immagine:{" "}
+                      <Link
+                        href={failGifs[randomgif].image.src}
+                        target="_blank"
+                      >
+                        <span className="font-bold">
+                          <b>{failGifs[randomgif].image.source}</b>
+                        </span>
+                      </Link>
+                    </p>
+                    <div className="text-center flex justify-center items-center px-8">
+                      <div>
+                        <h1 className="text-4xl sm:text-5xl text-center text-red-400 font-bold">
+                          <b>Game Over!</b>
+                        </h1>
+                        <p>
+                          <span className="opacity-80 tex-2xl">
+                            Hai fatto un punteggio di{" "}
+                          </span>
+                          <span className="text-[#FFEA2D]">{score} </span>
+                          <span className="opacity-80">
+                            {" "}
+                            (Migliore: {bestScore}{" "}
+                          </span>
+                          )
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="border-t-2 border-white/5 bg-white/5 px-4 py-3 sm:flex sm:flex-row-reverse sm:px-6">
+                    <button
+                      type="button"
+                      className="transition duration-200 active:scale-95 inline-flex w-full justify-center rounded-lg lg:hover:opacity-50 bg-red-400 text-red-900 px-8 py-2 font-semibold items-center sm:ml-3 sm:w-auto"
+                      onClick={() => window.location.reload()}
+                    >
+                      <span>
+                        <FontAwesomeIcon
+                          width={"2rem"}
+                          color="#7f1d1d"
+                          icon={faArrowRotateBack as IconProp}
+                        />
+                      </span>
+                      <span>Riprova</span>
+                    </button>
+                    <Link href={"/"}>
+                      <button
+                        type="button"
+                        className="transition duration-200 active:scale-95 lg:hover:opacity-50 mt-3 inline-flex w-full justify-center rounded-lg text-white border-2 border-white px-3 py-2 font-semibold ring-1 ring-inset ring-gray-300 sm:mt-0 sm:w-auto"
+                        onClick={() => setOpen(false)}
+                      >
+                        <span>
+                          <FontAwesomeIcon
+                            width={"2rem"}
+                            color="white"
+                            icon={faArrowLeft as IconProp}
+                          />
+                        </span>
+                        <span>Indietro</span>
+                      </button>
+                    </Link>
+                  </div>
+                </Dialog.Panel>
+              </Transition.Child>
+            </div>
+          </div>
+        </Dialog>
+      </Transition.Root>
       <div className="pointer-events-none absolute z-50 w-screen flex justify-center pt-[1rem] md:pt-[0.8rem] lg:pt-4">
         <div className="text-center flex flex-col -space-y-1 md:space-y-0">
           <motion.div
