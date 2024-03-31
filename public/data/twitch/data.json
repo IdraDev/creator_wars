@@ -133,6 +133,13 @@
     }
   },
   {
+    "name": "ManuuXO",
+    "image": {
+      "src": "https://pbs.twimg.com/media/F1Ql8DcWwAI_zLN.jpg:large",
+      "source": "X"
+    }
+  },
+  {
     "name": "giankoextreme",
     "image": {
       "src": "https://static-cdn.jtvnw.net/cf_vods/dgeft87wbj63p/73a18827eb62d911c6e9_giankoextreme_41995854536_1709582336//thumb/thumb0-640x360.jpg",
@@ -151,6 +158,13 @@
     "image": {
       "src": "https://directus.luccacomicsandgames.com/lucca-comics-2022/assets/3oz4k6rfazeoogk0?key=directus-large-contain",
       "source": "Lucca Comics & Games"
+    }
+  },
+  {
+    "name": "Elisery",
+    "image": {
+      "src": "https://pbs.twimg.com/profile_images/1220756785625169920/SFf0La-t_400x400.jpg",
+      "source": "X"
     }
   },
   {
