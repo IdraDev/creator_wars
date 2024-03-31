@@ -114,7 +114,7 @@ export default function Twitch() {
         setElement2({ ...data[index2], index: index2 });
         setScore(score + 1);
         if (score + 1 > bestScore) setBestScore(score + 1);
-      }, 1600);
+      }, 1800);
     } else {
       setButtons(false);
       setWrong(true);
