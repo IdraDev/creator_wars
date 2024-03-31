@@ -1,6 +1,7 @@
 // @ts-nocheck
 "use client";
 import React, { useState, useEffect } from "react";
+import Link from "next/link";
 import Header from "../components/header";
 import { motion } from "framer-motion";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -28,7 +29,7 @@ export default function Home() {
       followers: 1,
       image: {
         src: "https://www.rollingstone.it/wp-content/uploads/2019/11/tha-supreme-chi-e%CC%80.jpg",
-        name: "Test",
+        source: "Test",
       },
     },
     {
@@ -36,7 +37,7 @@ export default function Home() {
       followers: 2,
       image: {
         src: "https://www.corriere.it/methode_image/2023/11/21/Spettacoli/Foto%20Spettacoli%20-%20Trattate/344.0.900047188-kbBG-U3450673206846rkD-656x492@Corriere-Web-Sezioni.jpg",
-        name: "Test",
+        source: "Corriere.it",
       },
     },
     {
@@ -44,7 +45,7 @@ export default function Home() {
       followers: 3,
       image: {
         src: "https://cdn.skuola.net/w1200h687/news_foto/2022/02/dario-moccia.jpg",
-        name: "Test",
+        source: "Test",
       },
     },
     {
@@ -52,7 +53,7 @@ export default function Home() {
       followers: 4,
       image: {
         src: "https://directus.luccacomicsandgames.com/lucca-comics-2023/assets/3dw9hfpci7mskkk0?key=directus-large-contain",
-        name: "Test",
+        source: "Test",
       },
     },
   ];
@@ -74,8 +75,12 @@ export default function Home() {
 
     return [index1, index2];
   };
-
   useEffect(() => {
+    const storedBestScore = localStorage.getItem("bestScore");
+    if (storedBestScore) {
+      setBestScore(parseInt(storedBestScore));
+    }
+
     const [index1, index2] = generateRandomIndexes([
       element1?.index,
       element2?.index,
@@ -84,10 +89,14 @@ export default function Home() {
     setElement2({ ...data[index2], index: index2 });
   }, []);
 
+  useEffect(() => {
+    localStorage.setItem("bestScore", bestScore.toString());
+  }, [bestScore]);
+
   const checkAnswer = (selected) => {
     const isCorrect = selected
-      ? element2.followers > element1.followers
-      : element2.followers < element1.followers;
+      ? element2.followers > element1?.followers
+      : element2.followers < element1?.followers;
     if (isCorrect) {
       setCorrect(true);
       setButtons(false);
@@ -113,7 +122,21 @@ export default function Home() {
   return (
     <main>
       <Header />
-      <div className="pointer-events-none absolute z-50 w-screen flex justify-center pt-[1rem] md:pt-[2rem] lg:pt-20">
+      <div className="pointer-events-none absolute z-50 w-screen flex justify-center pt-[1rem] md:pt-[0.8rem] lg:pt-4">
+        <div className="text-center flex flex-col -space-y-1 md:space-y-0">
+          <motion.div
+            initial={{ y: 0, opacity: 0 }}
+            animate={{ y: 10, opacity: 100 }}
+          >
+            <p>
+              <span className="opacity-80">Punteggio: </span>
+              {score} <span className="opacity-80">Migliore: </span>{" "}
+              <span className="text-[#FFEA2D]">{bestScore}</span>
+            </p>
+          </motion.div>
+        </div>
+      </div>
+      <div className="pointer-events-none absolute z-50 w-screen flex justify-center pt-[2.8rem] md:pt-[2.5rem] lg:pt-12">
         <div className="text-center flex flex-col -space-y-1 md:space-y-0">
           <motion.div
             initial={{ y: 0, opacity: 0 }}
@@ -151,7 +174,7 @@ export default function Home() {
                 initial={{ scale: 0, opacity: 0 }}
                 animate={{ scale: 1, opacity: 100 }}
               >
-                <div className="flex flex-row space-x-2 items-center mt-3 rounded-full bg-red-400 text-red-900 w-fit mx-auto px-12 py-1 shadow">
+                <div className="flex flex-row space-x-2 items-center mt-1 lg:mt-3 rounded-full bg-red-400 text-red-900 w-fit mx-auto px-12 py-1 shadow">
                   <FontAwesomeIcon color="#7f1d1d" icon={faXmark as IconProp} />
                   <span>Sbagliato!</span>
                 </div>
@@ -216,6 +239,14 @@ export default function Home() {
                   <b>{element1?.followers}</b>
                 </h1>
               </motion.div>
+            </div>
+            <div className="text-sm opacity-80 fixed z-50 bottom-8 left-10">
+              <p>
+                Fonte immagine:{" "}
+                <Link href={element1?.image.src} target="_blank">
+                  <strong>{element1?.image.source}</strong>
+                </Link>
+              </p>
             </div>
             <img
               src={element1?.image.src}
@@ -299,6 +330,15 @@ export default function Home() {
                 </div>
               )}
             </div>
+            <div className="text-sm opacity-80 fixed z-50 bottom-8 right-10">
+              <p>
+                Fonte immagine:{" "}
+                <Link href={element2?.image.src} target="_blank">
+                  <strong>{element2?.image.source}</strong>
+                </Link>
+              </p>
+            </div>
+
             <img
               src={element2?.image.src}
               className={`${wrong && "grayscale"} w-full h-full object-cover transition duration-200 opacity-20 group-hover:lg:opacity-30`}
