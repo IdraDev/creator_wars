@@ -9,8 +9,8 @@ export default function Home() {
       <div className="">
         <div className="flex flex-col items-center justify-center text-center space-y-3">
           <motion.div
-            initial={{ rotate: 45, opacity: 0, scale: 0 }}
-            animate={{ rotate: 0, opacity: 100, scale: 1 }}
+            initial={{ opacity: 0, scale: 0 }}
+            animate={{ opacity: 100, scale: 1 }}
             transition={{ ease: "easeInOut" }}
           >
             <img
@@ -19,13 +19,19 @@ export default function Home() {
               alt=""
               draggable="false"
             />
-            <p className="mt-2 text-neutral-300">
-              BETA{" "}
-              <span className="font-bold">
-                <b>v1.0</b>
-              </span>{" "}
-              - Dati aggiornati il 04 2024
-            </p>
+            <motion.div
+              initial={{ y: 5, opacity: 0 }}
+              animate={{ y: 0, opacity: 100 }}
+              transition={{ ease: "easeInOut", delay: 0.2 }}
+            >
+              <p className="mt-2 text-neutral-300">
+                BETA{" "}
+                <span className="font-bold">
+                  <b>v1.0</b>
+                </span>{" "}
+                - Dati aggiornati il 04 2024
+              </p>
+            </motion.div>
           </motion.div>
         </div>
         <motion.div

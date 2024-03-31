@@ -1,12 +1,12 @@
 // @ts-nocheck
 "use client";
 import React, { Fragment, useState, useEffect } from "react";
+import useSWR from "swr";
 import Link from "next/link";
 import Header from "@/components/header";
 import { motion } from "framer-motion";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { IconProp } from "@fortawesome/fontawesome-svg-core";
-import { useRouter } from "next/navigation";
 import {
   faArrowUp,
   faArrowDown,
@@ -15,10 +15,11 @@ import {
   faArrowLeft,
   faArrowRotateBack,
 } from "@fortawesome/free-solid-svg-icons";
+
 import { faTwitch } from "@fortawesome/free-brands-svg-icons";
 import { Dialog, Transition } from "@headlessui/react";
 
-export default function Instagram() {
+export default function Twitch() {
   const [score, setScore] = useState(0);
   const [bestScore, setBestScore] = useState(0);
   const [element1, setElement1] = useState();
@@ -27,39 +28,137 @@ export default function Instagram() {
   const [wrong, setWrong] = useState(false);
   const [buttons, setButtons] = useState(true);
   const [open, setOpen] = useState(false);
-  const router = useRouter();
+
+  const [animationKey1, setAnimationKey1] = useState(0);
+  const [animationKey2, setAnimationKey2] = useState(1);
+
+  const fetcher = (url) => fetch(url).then((res) => res.json());
 
   const data = [
     {
-      name: "Tha Supreme",
-      followers: 1,
+      name: "MatteoHS",
       image: {
-        src: "https://www.rollingstone.it/wp-content/uploads/2019/11/tha-supreme-chi-e%CC%80.jpg",
-        source: "Test",
+        src: "https://media1.tenor.com/m/qz_K8setkXwAAAAC/matteohs-eating.gif",
+        source: "Tenor",
       },
     },
     {
-      name: "Fedez",
-      followers: 2,
+      name: "NeZaK_",
       image: {
-        src: "https://www.corriere.it/methode_image/2023/11/21/Spettacoli/Foto%20Spettacoli%20-%20Trattate/344.0.900047188-kbBG-U3450673206846rkD-656x492@Corriere-Web-Sezioni.jpg",
-        source: "Corriere.it",
+        src: "https://creatorsontwitch.com/_next/image?url=https%3A%2F%2Fbackend.creatorsontwitch.com%2Fwp-content%2Fuploads%2F2021%2F06%2FNezak_.png&w=640&q=100",
+        source: "CreatorsOnTwitch",
       },
     },
     {
-      name: "Dario Moccia",
-      followers: 3,
+      name: "Enkk",
       image: {
-        src: "https://cdn.skuola.net/w1200h687/news_foto/2022/02/dario-moccia.jpg",
-        source: "Test",
+        src: "https://media1.tenor.com/m/Dz64Z4SEwIwAAAAd/enkk.gif",
+        source: "Tenor",
       },
     },
     {
-      name: "Maurizio Merluzzo",
-      followers: 4,
+      name: "POW3R",
       image: {
-        src: "https://directus.luccacomicsandgames.com/lucca-comics-2023/assets/3dw9hfpci7mskkk0?key=directus-large-contain",
-        source: "Test",
+        src: "https://media1.tenor.com/m/BYK4vr8V_OAAAAAd/pow3r-giorgio-calandrelli.gif",
+        source: "Tenor",
+      },
+    },
+    {
+      name: "Homyatol",
+      image: {
+        src: "https://media1.tenor.com/m/n2NkgrfxnS0AAAAd/homy-angeli-blu-homyatol-angeli-blu.gif",
+        source: "Tenor",
+      },
+    },
+    {
+      name: "NNarcos",
+      image: {
+        src: "https://static-cdn.jtvnw.net/jtv_user_pictures/7985342a-ccf4-41bc-85cc-8d2bff1b6ef5-channel_offline_image-1920x1080.jpeg",
+        source: "Twitch",
+      },
+    },
+    {
+      name: "lollolacustre",
+      image: {
+        src: "https://p16-sign-va.tiktokcdn.com/tos-maliva-avt-0068/e6746d21eb46f406dba11aa8a839e47a~c5_720x720.jpeg?lk3s=a5d48078&x-expires=1711994400&x-signature=whLM7VZgXY4x5nLAUyepuVnwX98%3D",
+        source: "TikTok",
+      },
+    },
+    {
+      name: "pizfn",
+      image: {
+        src: "https://panels.twitch.tv/panel-236507843-image-9d5d2396-96f6-44ae-a57d-d0951bfb8f67",
+        source: "Twitch Panels",
+      },
+    },
+    {
+      name: "TheRealMarzaa",
+      image: {
+        src: "https://clips-media-assets2.twitch.tv/vqe5SiKd8mpiODMiTZiPUw/46747265324-offset-6654-preview-480x272.jpg",
+        source: "Twitch",
+      },
+    },
+    {
+      name: "Rekinss",
+      image: {
+        src: "https://i.ytimg.com/vi/6qohR7GLe8E/oar2.jpg?sqp=-oaymwEYCJUDENAFSFqQAgHyq4qpAwcIARUAAIhC&rs=AOn4CLA_6UuWFvNDubBIW-wydtIrgku-uw",
+        source: "Twitch",
+      },
+    },
+    {
+      name: "Chxcco",
+      image: {
+        src: "https://media1.tenor.com/m/h3rVLgV4HfIAAAAd/chxcco-coralmc.gif",
+        source: "Tenor",
+      },
+    },
+    {
+      name: "Homyatol",
+      image: {
+        src: "https://media1.tenor.com/m/n2NkgrfxnS0AAAAd/homy-angeli-blu-homyatol-angeli-blu.gif",
+        source: "Tenor",
+      },
+    },
+    {
+      name: "Gravier",
+      image: {
+        src: "https://i.ytimg.com/vi/hn2xOdwTyYs/maxresdefault.jpg",
+        source: "YouTube",
+      },
+    },
+    {
+      name: "Dada",
+      image: {
+        src: "https://clips-media-assets2.twitch.tv/AT-cm%7C1126066041-preview-480x272.jpg",
+        source: "Twitch",
+      },
+    },
+    {
+      name: "hmattTV",
+      image: {
+        src: "https://clips-media-assets2.twitch.tv/oKPqpYFdDdgNL4oFoZaSIg/AT-cm%7CoKPqpYFdDdgNL4oFoZaSIg-preview-260x147.jpg",
+        source: "Twitch",
+      },
+    },
+    {
+      name: "Kafkanya",
+      image: {
+        src: "https://media1.tenor.com/m/yk2KI5Bjvv4AAAAd/kafgoodbye-kafkanya.gif",
+        source: "Tenor",
+      },
+    },
+    {
+      name: "Patrizio_Official",
+      image: {
+        src: "https://static-cdn.jtvnw.net/jtv_user_pictures/e9d310e6-7c57-4e19-8002-cf4daaadbf9b-profile_image-300x300.png",
+        source: "Twitch",
+      },
+    },
+    {
+      name: "Cedduzzo",
+      image: {
+        src: "https://static-cdn.jtvnw.net/jtv_user_pictures/b683e004-88a7-4404-b19f-919403dd4595-profile_image-300x300.jpeg",
+        source: "Twitch",
       },
     },
   ];
@@ -144,14 +243,32 @@ export default function Instagram() {
     setElement2({ ...data[index2], index: index2 });
   }, []);
 
+  const { data: followersData1, error: followersError1 } = useSWR(
+    element1
+      ? `https://twitchtracker.com/api/channels/summary/${element1.name}`
+      : null,
+    fetcher
+  );
+
+  const { data: followersData2, error: followersError2 } = useSWR(
+    element2
+      ? `https://twitchtracker.com/api/channels/summary/${element2.name}`
+      : null,
+    fetcher
+  );
+
+  console.log(followersData1?.followers_total, followersData2?.followers_total);
+
   const checkAnswer = (selected) => {
     const isCorrect = selected
-      ? element2.followers > element1?.followers
-      : element2.followers < element1?.followers;
+      ? followersData2?.followers_total > followersData1?.followers_total
+      : followersData2?.followers_total < followersData1?.followers_total;
     if (isCorrect) {
       setCorrect(true);
       setButtons(false);
       setTimeout(() => {
+        setAnimationKey1(animationKey1 + 1);
+        setAnimationKey2(animationKey2 + 1);
         setCorrect(false);
         setButtons(true);
         setWrong(false);
@@ -170,6 +287,18 @@ export default function Instagram() {
       setTimeout(() => {
         setOpen(true);
       }, 3200);
+    }
+  };
+
+  const formatNumber = (number) => {
+    if (number < 1000) {
+      return number;
+    } else if (number < 1000000) {
+      return (number / 1000).toFixed(1) + "k";
+    } else if (number < 1000000000) {
+      return (number / 1000000).toFixed(1) + "Mln";
+    } else {
+      return (number / 1000000000).toFixed(1) + "Mld";
     }
   };
 
@@ -388,12 +517,16 @@ export default function Instagram() {
                 </p>
               </motion.div>
               <motion.div
+                key={animationKey1}
                 initial={{ y: -0, opacity: 0 }}
-                animate={{ y: -5, opacity: 100 }}
-                transition={{ delay: 0.25 }}
+                animate={{
+                  y: followersData1 ? -5 : 0,
+                  opacity: followersData1 ? 100 : 0,
+                }}
+                transition={{ delay: 0.5 }}
               >
                 <h1 className="drop-shadow-md text-[#FFEA2D] font-bold text-4xl sm:text-5xl lg:text-6xl">
-                  <b>{element1?.followers}</b>
+                  <b>{formatNumber(followersData1?.followers_total)}</b>
                 </h1>
               </motion.div>
             </div>
@@ -438,14 +571,18 @@ export default function Instagram() {
               </motion.div>
               {(wrong || correct) && (
                 <motion.div
+                  key={animationKey2}
                   initial={{ y: -0, opacity: 0 }}
-                  animate={{ y: -5, opacity: 100 }}
-                  transition={{ delay: 0.25 }}
+                  animate={{
+                    y: followersData2 ? -5 : 0,
+                    opacity: followersData2 ? 100 : 0,
+                  }}
+                  transition={{ delay: 0.5 }}
                 >
                   <h1
                     className={`drop-shadow-md text-[#FFEA2D] ${wrong && "text-red-400"} ${correct && "text-green-400"} drop-shadow-md font-bold text-5xl lg:text-6xl`}
                   >
-                    <b>{element2?.followers}</b>
+                    <b>{formatNumber(followersData2?.followers_total)}</b>
                   </h1>
                 </motion.div>
               )}
