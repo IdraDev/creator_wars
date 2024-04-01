@@ -17,13 +17,10 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import data from "@/public/data/twitch/data.json";
 import gifs from "@/public/data/twitch/gifs.json";
-import { useSearchParams } from "next/navigation";
 import { faTwitch } from "@fortawesome/free-brands-svg-icons";
 import { Dialog, Transition } from "@headlessui/react";
 
 export default function Twitch() {
-  const searchParams = useSearchParams();
-
   const [score, setScore] = useState(0);
   const [bestScore, setBestScore] = useState(0);
   const [open, setOpen] = useState(false);
@@ -35,7 +32,6 @@ export default function Twitch() {
   const [animationKey1, setAnimationKey1] = useState(0);
   const [animationKey2, setAnimationKey2] = useState(1);
   const [currentElement2, setCurrentElement2] = useState();
-  const debug = searchParams.get("debug");
 
   // Random Indexes
   const generateRandomIndexes = (prevIndexes) => {
@@ -97,7 +93,7 @@ export default function Twitch() {
     const isCorrect = selected
       ? followersData2?.followers_total > followersData1?.followers_total
       : followersData2?.followers_total < followersData1?.followers_total;
-    if (isCorrect || debug) {
+    if (isCorrect) {
       setCorrect(true);
       setButtons(false);
       setTimeout(() => {
