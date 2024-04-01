@@ -32,22 +32,21 @@ export default function Twitch() {
   const [buttons, setButtons] = useState(true);
   const [animationKey1, setAnimationKey1] = useState(0);
   const [animationKey2, setAnimationKey2] = useState(1);
+  const [currentElement2, setCurrentElement2] = useState();
 
   // Random Indexes
   const generateRandomIndexes = (prevIndexes) => {
-    let index1 = Math.floor(Math.random() * data.length);
-    let index2 = Math.floor(Math.random() * data.length);
-
-    while (
+    let index1, index2;
+    do {
+      index1 = Math.floor(Math.random() * data.length);
+      index2 = Math.floor(Math.random() * data.length);
+    } while (
       index1 === prevIndexes[0] ||
       index1 === prevIndexes[1] ||
       index2 === prevIndexes[0] ||
       index2 === prevIndexes[1] ||
       index1 === index2
-    ) {
-      index1 = Math.floor(Math.random() * data.length);
-      index2 = Math.floor(Math.random() * data.length);
-    }
+    );
 
     return [index1, index2];
   };
@@ -59,9 +58,9 @@ export default function Twitch() {
     ]);
     setElement1({ ...data[index1], index: index1 });
     setElement2({ ...data[index2], index: index2 });
+    setCurrentElement2({ ...data[index2], index: index2 });
   }, []);
 
-  // LocalStorage Best Score
   useEffect(() => {
     const storedBestScore = localStorage.getItem("bestTwitchScore");
     const parsedBestScore = parseInt(storedBestScore);
@@ -75,7 +74,6 @@ export default function Twitch() {
     localStorage.setItem("bestTwitchScore", bestScore.toString());
   }, [bestScore]);
 
-  // Followers data Fetch
   const fetcher = (url) => fetch(url).then((res) => res.json());
 
   const { data: followersData1, error: followersError1 } = useSWR(
@@ -92,7 +90,6 @@ export default function Twitch() {
     fetcher
   );
 
-  // Answer engine
   const checkAnswer = (selected) => {
     const isCorrect = selected
       ? followersData2?.followers_total > followersData1?.followers_total
@@ -106,12 +103,13 @@ export default function Twitch() {
         setCorrect(false);
         setButtons(true);
         setWrong(false);
+        setElement1(currentElement2);
         const [index1, index2] = generateRandomIndexes([
           element1?.index,
-          element2?.index,
+          currentElement2?.index,
         ]);
-        setElement1({ ...data[index1], index: index1 });
         setElement2({ ...data[index2], index: index2 });
+        setCurrentElement2({ ...data[index2], index: index2 });
         setScore(score + 1);
         if (score + 1 > bestScore) setBestScore(score + 1);
       }, 1800);
@@ -124,7 +122,6 @@ export default function Twitch() {
     }
   };
 
-  // Number formatter
   const formatNumber = (number) => {
     if (number < 1000) {
       return number;
@@ -137,7 +134,6 @@ export default function Twitch() {
     }
   };
 
-  // Random gif
   const randomgif = Math.floor(Math.random() * gifs.length);
 
   return (
@@ -421,44 +417,48 @@ export default function Twitch() {
                 </motion.div>
               )}
 
-              {buttons && (
-                <div className="flex items-center pt-4 flex-col space-y-4">
-                  <motion.div
-                    key={animationKey2}
-                    initial={{ y: -5, opacity: 0 }}
-                    animate={{ y: -0, opacity: 100 }}
-                    transition={{ delay: 0.4 }}
-                  >
-                    <button
-                      onClick={() => checkAnswer(true)}
-                      className="shadow-md focus:outline-none w-fit text-center items-center transition duration-200 lg:hover:scale-105 lg:hover:bg-black/50 active:scale-95 focus:ring-2 focus:ring-white/10 flex flex-row space-x-2 rounded-full px-12 py-2.5 border-2 border-white/30 lg:hover:border-white/80 bg-black/20 backdrop-blur-sm"
-                    >
-                      <span>Di più</span>{" "}
-                      <FontAwesomeIcon
-                        width={"0.8rem"}
-                        color="#54FF45"
-                        icon={faArrowUp as IconProp}
-                      />
-                    </button>
-                  </motion.div>
-                  <motion.div
-                    initial={{ y: 0, opacity: 0 }}
-                    animate={{ y: -5, opacity: 100 }}
-                    transition={{ delay: 0.4 }}
-                  >
-                    <button
-                      onClick={() => checkAnswer(false)}
-                      className="shadow-md focus:outline-none  w-fit text-center items-center transition duration-200 lg:hover:scale-105 lg:hover:bg-black/50 active:scale-95 focus:ring-2 focus:ring-white/10 flex flex-row space-x-2 rounded-full px-10 py-2.5 border-2 border-white/30 lg:hover:border-white/80 bg-black/20 backdrop-blur-sm"
-                    >
-                      <span>Di meno</span>
-                      <FontAwesomeIcon
-                        width={"0.8rem"}
-                        color="#FF4545"
-                        icon={faArrowDown as IconProp}
-                      />
-                    </button>
-                  </motion.div>
-                </div>
+              {followersData1?.followers_total && (
+                <>
+                  {buttons && (
+                    <div className="flex items-center pt-4 flex-col space-y-4">
+                      <motion.div
+                        key={animationKey2}
+                        initial={{ y: -5, opacity: 0 }}
+                        animate={{ y: -0, opacity: 100 }}
+                        transition={{ delay: 0.4 }}
+                      >
+                        <button
+                          onClick={() => checkAnswer(true)}
+                          className="shadow-md focus:outline-none w-fit text-center items-center transition duration-200 lg:hover:scale-105 lg:hover:bg-black/50 active:scale-95 focus:ring-2 focus:ring-white/10 flex flex-row space-x-2 rounded-full px-12 py-2.5 border-2 border-white/30 lg:hover:border-white/80 bg-black/20 backdrop-blur-sm"
+                        >
+                          <span>Di più</span>{" "}
+                          <FontAwesomeIcon
+                            width={"0.8rem"}
+                            color="#54FF45"
+                            icon={faArrowUp as IconProp}
+                          />
+                        </button>
+                      </motion.div>
+                      <motion.div
+                        initial={{ y: 0, opacity: 0 }}
+                        animate={{ y: -5, opacity: 100 }}
+                        transition={{ delay: 0.4 }}
+                      >
+                        <button
+                          onClick={() => checkAnswer(false)}
+                          className="shadow-md focus:outline-none  w-fit text-center items-center transition duration-200 lg:hover:scale-105 lg:hover:bg-black/50 active:scale-95 focus:ring-2 focus:ring-white/10 flex flex-row space-x-2 rounded-full px-10 py-2.5 border-2 border-white/30 lg:hover:border-white/80 bg-black/20 backdrop-blur-sm"
+                        >
+                          <span>Di meno</span>
+                          <FontAwesomeIcon
+                            width={"0.8rem"}
+                            color="#FF4545"
+                            icon={faArrowDown as IconProp}
+                          />
+                        </button>
+                      </motion.div>
+                    </div>
+                  )}
+                </>
               )}
             </div>
             <div className="text-sm opacity-80 fixed z-50 bottom-8 right-10">

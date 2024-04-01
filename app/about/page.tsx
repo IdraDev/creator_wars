@@ -5,7 +5,11 @@ import Header from "@/components/header";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { IconProp } from "@fortawesome/fontawesome-svg-core";
 import { faBug, faHome, faInfoCircle } from "@fortawesome/free-solid-svg-icons";
-import { faTwitch, faDiscord } from "@fortawesome/free-brands-svg-icons";
+import {
+  faTwitch,
+  faDiscord,
+  faGithub,
+} from "@fortawesome/free-brands-svg-icons";
 
 function About() {
   return (
@@ -62,6 +66,20 @@ function About() {
                   </span>
                   <b>
                     <span>Twitch</span>
+                  </b>
+                </button>
+              </Link>
+              <Link href={"https://github.com/IdraDev"} target="_blank">
+                <button className="px-8 py-2 transition duration-200 active:scale-95 hover:scale-105 rounded-lg bg-black text-white font-bold">
+                  <span>
+                    <FontAwesomeIcon
+                      width={"2rem"}
+                      color="white"
+                      icon={faGithub as IconProp}
+                    />
+                  </span>
+                  <b>
+                    <span>GitHub</span>
                   </b>
                 </button>
               </Link>

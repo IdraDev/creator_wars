@@ -245,6 +245,20 @@
     }
   },
   {
+    "name": "Kokeshi",
+    "image": {
+      "src": "https://pbs.twimg.com/media/D0DCuu2WsAEPfXe?format=jpg&name=large",
+      "source": "Chi è?"
+    }
+  },
+  {
+    "name": "LucyL3in",
+    "image": {
+      "src": "https://pbs.twimg.com/media/GFXIYbYWMAAl1v_?format=jpg&name=large",
+      "source": "Chi è?"
+    }
+  },
+  {
     "name": "ilMasseo",
     "image": {
       "src": "https://media1.tenor.com/m/PmzjbX5wYYoAAAAd/talkpout-ilmasseo.gif",
@@ -312,6 +326,69 @@
     "image": {
       "src": "https://i.ytimg.com/vi/g3zmbdHw9Cw/frame0.jpg",
       "source": "YouTube"
+    }
+  },
+  {
+    "name": "Kroatomist",
+    "image": {
+      "src": "https://static.wikia.nocookie.net/fortnite_esports_gamepedia_en/images/8/85/Kroatomist.jpg/revision/latest?cb=20190916175459",
+      "source": "Fortnite Esports Wiki"
+    }
+  },
+  {
+    "name": "DavidRubino",
+    "image": {
+      "src": "https://static.wikia.nocookie.net/youtube/images/7/78/Rubino.jpg/revision/latest?cb=20200710180749&path-prefix=it",
+      "source": "Fandom"
+    }
+  },
+  {
+    "name": "Gskianto",
+    "image": {
+      "src": "https://media1.tenor.com/m/c7EKZ7KTMT0AAAAd/gskianto-trallala.gif",
+      "source": "Tenor"
+    }
+  },
+  {
+    "name": "ImViolet_",
+    "image": {
+      "src": "https://pbs.twimg.com/media/F4f1yzWXEAAu8c2.jpg:large",
+      "source": "Twitch"
+    }
+  },
+  {
+    "name": "RoundTwoTwitch",
+    "image": {
+      "src": "https://techprincess.it/wp-content/uploads/2023/02/RoundTWO.jpg",
+      "source": "TechPrincess"
+    }
+  },
+  {
+    "name": "S7ORMyTv",
+    "image": {
+      "src": "https://static-cdn.jtvnw.net/jtv_user_pictures/51f00f01-535a-49da-acbf-bb48c9d640e9-profile_image-300x300.png",
+      "source": "Twitch"
+    }
+  },
+  {
+    "name": "Leutum",
+    "image": {
+      "src": "https://styles.redditmedia.com/t5_7uesra/styles/communityIcon_8xmw1ttnhxha1.png",
+      "source": "Reddit"
+    }
+  },
+  {
+    "name": "NanniTwitch",
+    "image": {
+      "src": "https://clips-media-assets2.twitch.tv/40176513789-offset-5958-preview-480x272.jpg",
+      "source": "Twitch"
+    }
+  },
+  {
+    "name": "Freneh",
+    "image": {
+      "src": "https://static-cdn.jtvnw.net/jtv_user_pictures/2292b88f-9b40-41af-b904-06cb77969115-profile_image-300x300.png",
+      "source": "Twitch"
     }
   }
 ]
