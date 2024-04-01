@@ -135,9 +135,13 @@ export default function Twitch() {
 
   const randomgif = Math.floor(Math.random() * gifs.length);
 
+  const handleClose = () => {
+    setOpen(true);
+  };
+
   return (
     <main>
-      <Transition.Root show={open} as={Fragment} onClose={setOpen}>
+      <Transition.Root show={open} as={Fragment} onClose={handleClose}>
         <Dialog as="div" className="relative z-50">
           <Transition.Child
             as={Fragment}

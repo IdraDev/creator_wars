@@ -49,10 +49,24 @@
     }
   },
   {
+    "name": "Kurolily",
+    "image": {
+      "src": "https://directus.luccacomicsandgames.com/lucca-comics-2022/assets/gv310oji3eo0osww?key=directus-large-contain",
+      "source": "Lucca Comics & Games"
+    }
+  },
+  {
     "name": "Lollolacustre",
     "image": {
-      "src": "https://p16-sign-va.tiktokcdn.com/tos-maliva-avt-0068/e6746d21eb46f406dba11aa8a839e47a~c5_720x720.jpeg?lk3s=a5d48078&x-expires=1711994400&x-signature=whLM7VZgXY4x5nLAUyepuVnwX98%3D",
+      "src": "https://static-cdn.jtvnw.net/jtv_user_pictures/7f247561-4f46-471e-a326-03df00bdf824-profile_image-300x300.png",
       "source": "TikTok"
+    }
+  },
+  {
+    "name": "Poldo",
+    "image": {
+      "src": "https://cdn1.procne.cloud/comicon-media/c3jmg83hcok39gw270tte5uahcqg",
+      "source": "Comicon Festival"
     }
   },
   {
@@ -254,8 +268,8 @@
   {
     "name": "LucyL3in",
     "image": {
-      "src": "https://pbs.twimg.com/media/GFXIYbYWMAAl1v_?format=jpg&name=large",
-      "source": "Chi è?"
+      "src": "https://i.pinimg.com/originals/b4/f2/fb/b4f2fb0528450a299401e931fe5875ef.jpg",
+      "source": "Pinterest"
     }
   },
   {

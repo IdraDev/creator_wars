@@ -28,7 +28,7 @@ function About() {
       </motion.div>
       <Header logo={true} />
       <div>
-        <div className="absolute w-screen h-screen p-4 sm:p-10 lg:p-12 min-h-screen grid grid-cols-1 place-items-center">
+        <div className="absolute text-center lg:text-start w-screen h-screen p-4 sm:p-10 lg:p-12 min-h-screen grid grid-cols-1 place-items-center">
           <div>
             <h1 className="text-2xl font-bold">
               <b>CreatorWars, by IdraDev</b>
@@ -37,7 +37,7 @@ function About() {
               Versione BETA 1.0 <br />
               Let's work together!
             </p>
-            <div className="flex flex-row space-x-2">
+            <div className="flex flex-col lg:flex-row items-center space-y-3 lg:space-y-0 lg:space-x-2">
               <Link href={"https://dsc.gg/idragraphics"} target="_blank">
                 <button className="px-8 py-2 transition duration-200 active:scale-95 hover:scale-105 rounded-lg bg-blue-600 text-white font-bold">
                   <span>
