@@ -5,7 +5,11 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { IconProp } from "@fortawesome/fontawesome-svg-core";
 import { faBug, faHome, faInfoCircle } from "@fortawesome/free-solid-svg-icons";
 
-export default function Header() {
+type Props = {
+  logo: boolean;
+};
+
+export default function Header(props: Props) {
   return (
     <div className="flex flex-row space-x-3 absolute p-4 md:p-6">
       <Menu as="div" className="-mb- relative inline-block text-left z-50">
@@ -53,7 +57,7 @@ export default function Header() {
                   </button>
                 </Menu.Item>
               </Link>
-              <Link href="/bug-report">
+              <Link href="https://tally.so/r/nP6gp1" target="_blank">
                 <Menu.Item>
                   <button className="block px-4 py-2 text-sm w-full hover:bg-black/20 transition duration-100">
                     <div className="flex flex-row space-x-1.5 fill-white opacity-80">
@@ -68,7 +72,7 @@ export default function Header() {
                   </button>
                 </Menu.Item>
               </Link>
-              <Link href="/bug-report">
+              <Link href="/about">
                 <Menu.Item>
                   <button className="block px-4 py-2 text-sm w-full hover:bg-black/20 transition duration-100">
                     <div className="flex flex-row space-x-1.5 fill-white opacity-80">
@@ -87,16 +91,18 @@ export default function Header() {
           </Menu.Items>
         </Transition>
       </Menu>
-      <div className="z-50 h-fit mt-1">
-        <Link href={"/"}>
-          <img
-            className="hidden lg:inline-block transition duration-200 lg:hover:scale-105 active:scale-95"
-            src="./logo.svg"
-            alt=""
-            draggable="false"
-          />
-        </Link>
-      </div>
+      {props.logo && (
+        <div className="z-50 h-fit mt-1">
+          <Link href={"/"}>
+            <img
+              className="hidden lg:inline-block transition duration-200 lg:hover:scale-105 active:scale-95"
+              src="./logo.svg"
+              alt=""
+              draggable="false"
+            />
+          </Link>
+        </div>
+      )}
     </div>
   );
 }

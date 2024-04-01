@@ -18,10 +18,10 @@ import {
 import data from "@/public/data/twitch/data.json";
 import gifs from "@/public/data/twitch/gifs.json";
 
-import { faTwitch } from "@fortawesome/free-brands-svg-icons";
+import { faYoutube } from "@fortawesome/free-brands-svg-icons";
 import { Dialog, Transition } from "@headlessui/react";
 
-export default function Twitch() {
+export default function YouTube() {
   const [score, setScore] = useState(0);
   const [bestScore, setBestScore] = useState(0);
   const [open, setOpen] = useState(false);
@@ -263,10 +263,10 @@ export default function Twitch() {
                 <FontAwesomeIcon
                   width={"2rem"}
                   color="white"
-                  icon={faTwitch as IconProp}
+                  icon={faYoutube as IconProp}
                 />
               </span>
-              <b>Chi ha più follower?</b>
+              <b>Chi ha più iscritti?</b>
             </h1>
           </motion.div>
           <motion.div
@@ -279,11 +279,11 @@ export default function Twitch() {
                 <FontAwesomeIcon
                   width={"1rem"}
                   color="white"
-                  icon={faTwitch as IconProp}
+                  icon={faYoutube as IconProp}
                 />
               </span>
               <span className="relative -top-0.5 sm:top-0">
-                Su <b>Twitch</b>
+                Su <b>YouTube</b>
               </span>
             </p>
 
