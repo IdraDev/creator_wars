@@ -322,24 +322,17 @@
     }
   },
   {
-    "name": "Kilnier",
-    "image": {
-      "src": "https://i.ytimg.com/vi/g3zmbdHw9Cw/frame0.jpg",
-      "source": "YouTube"
-    }
-  },
-  {
     "name": "Kroatomist",
     "image": {
-      "src": "https://static.wikia.nocookie.net/fortnite_esports_gamepedia_en/images/8/85/Kroatomist.jpg/revision/latest?cb=20190916175459",
-      "source": "Fortnite Esports Wiki"
+      "src": "https://arkadia.agency/wp-content/uploads/2022/08/kroatomist5.png",
+      "source": "Arkadia Agency"
     }
   },
   {
     "name": "DavidRubino",
     "image": {
-      "src": "https://static.wikia.nocookie.net/youtube/images/7/78/Rubino.jpg/revision/latest?cb=20200710180749&path-prefix=it",
-      "source": "Fandom"
+      "src": "https://preview.redd.it/e1kau6o8pjz61.jpg?width=640&crop=smart&auto=webp&s=019389464c9ae03355c69c0399f673b6a249e0de",
+      "source": "Reddit"
     }
   },
   {
