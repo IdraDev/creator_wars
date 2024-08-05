@@ -4,3 +4,5 @@ Numerosi creator e influencer messi a confronto. Chi ha più followers/iscritti 
 ## Tecnologie dell'app
 ![App Stack](https://skillicons.dev/icons?i=html,css,tailwindcss,react,nextjs)
 
+## Demo
+https://www.creatorwars.it
